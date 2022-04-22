@@ -48,7 +48,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
-    environment: 'devcluster.raav-dev'
+    environment: 'openshift-sandbox.raav-dev'
     variables:
     - group: Release
     strategy:
