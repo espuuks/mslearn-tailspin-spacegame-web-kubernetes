@@ -48,7 +48,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
-    environment: 'openshift-sandbox.raav-stage'
+    environment: 'devcluster.raav-dev'
     variables:
     - group: Release
     strategy:
@@ -63,14 +63,14 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: 'Container Registry Connection'
-              kubernetesServiceConnection: 'openshift-sandbox-raav-stage-manual'
-              namespace: 'raav-stage'
+              kubernetesServiceConnection: 'openshift-sandbox-raav-dev-1650622972077'
+              namespace: 'raav-dev'
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
-              kubernetesServiceConnection: 'openshift-sandbox-raav-stage-manual'
-              namespace: 'raav-stage'
+              kubernetesServiceConnection: 'openshift-sandbox-raav-dev-1650622972077'
+              namespace: 'raav-dev'
               manifests: |
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
