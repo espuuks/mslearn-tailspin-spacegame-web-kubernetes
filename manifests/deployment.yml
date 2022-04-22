@@ -15,6 +15,9 @@ spec:
       containers:
         - name: web
           image: tailspinspacegame26984.azurecr.io/web
+          env:
+          - name: "ASPNETCORE_ENVIRONMENT"
+            value: "Development"
           ports:
           - containerPort: 8080
 ---
@@ -35,5 +38,8 @@ spec:
       containers:
         - name: leaderboard
           image: tailspinspacegame26984.azurecr.io/leaderboard
+          env:
+          - name: "ASPNETCORE_ENVIRONMENT"
+            value: "Development"
           ports:
           - containerPort: 8080
