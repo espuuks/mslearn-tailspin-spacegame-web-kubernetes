@@ -1,4 +1,3 @@
-pool: Self-hosted
 trigger:
 - 'main'
 
@@ -16,7 +15,7 @@ stages:
   - job: 'Build'
     displayName: 'Build job'
     pool:
-      vmImage: 'ubuntu-20.04'
+      name: 'Self-hosted'
     steps:
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
@@ -48,7 +47,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     pool:
-      vmImage: 'ubuntu-20.04'
+      name: 'Self-hosted'
     environment: 'openshift-sandbox.raav-dev'
     variables:
     - group: Release
